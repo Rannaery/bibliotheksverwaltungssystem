@@ -1,5 +1,17 @@
-{
-  Titel: "",
-  Ausgabe: "",
-  Erscheinungsjahr: "",
-}
+[
+  {
+    "Titel": "National Geographic",
+    "Ausgabe": "Juli 2025",
+    "Erscheinungsjahr": "2025"
+  },
+  {
+    "Titel": "Der Spiegel",
+    "Ausgabe": "Nr. 25",
+    "Erscheinungsjahr": "2024"
+  },
+  {
+    "Titel": "GEO Epoche",
+    "Ausgabe": "Rom – Die Antike",
+    "Erscheinungsjahr": "2023"
+  }
+]
