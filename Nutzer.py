@@ -1,9 +1,7 @@
 import json
 
-from Medium import Medium
+class Nutzer ():
 
-
-class Nutzer (Medium):
     def ausleihen(self, MediumID):
         pass
 
