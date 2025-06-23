@@ -1,17 +1,20 @@
 [
   {
+    "ID": 101,
     "Titel": "Der Alchimist",
     "Autor": "Paulo Coelho",
     "ISBN": "9783257069587",
     "Seitenzahl": "192"
   },
   {
+    "ID": 102,
     "Titel": "Die Physiker",
     "Autor": "Friedrich Dürrenmatt",
     "ISBN": "9783257230451",
     "Seitenzahl": "96"
   },
   {
+    "ID": 103,
     "Titel": "Die unendliche Geschichte",
     "Autor": "Michael Ende",
     "ISBN": "9783522200052",

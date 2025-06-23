@@ -1,14 +1,17 @@
 [
   {
     "Name": "Anna Müller",
-    "NutzerID": "001"
+    "NutzerID": "001",
+    "ausgeliehen": []
   },
   {
     "Name": "Maximilian Schröder",
-    "NutzerID": "002"
+    "NutzerID": "002",
+    "ausgeliehen": []
   },
   {
     "Name": "Leila Becker",
-    "NutzerID": "003"
+    "NutzerID": "003",
+    "ausgeliehen": []
   }
 ]
