@@ -3,16 +3,13 @@ from buch import Buch
 from zeitschrift import Zeitschrift
 from digitalemedien import DigitalesMedium
 from nutzer import Nutzer
-import os
+from ueberraschung import gib_ueberraschungs_fakt
 
-def clear_screen():
-    os.system('cls' if os.name == 'nt' else 'clear')
 
 def main_menu():
     bibliothek = Bibliothek()
-
+    print("Willkommen Herr Aschauer und Rühl bei unserem Projekt!")
     while True:
-        clear_screen()
         print("\n--- Bibliotheksverwaltung ---")
         print("1. Medium hinzufügen")
         print("2. Nutzer hinzufügen")
@@ -22,6 +19,7 @@ def main_menu():
         print("6. Nutzer anzeigen")
         print("7. Medien suchen")
         print("8. Beenden")
+        print("9. Überraschung")
 
         wahl = input("Ihre Wahl: ")
 
@@ -47,7 +45,7 @@ def main_menu():
                 input("Drücken Sie Enter zum Fortfahren...")
                 continue
             bibliothek.medium_hinzufuegen(medium)
-            print("Medium hinzugefügt.")
+            print(f"Medium '{medium.titel}' (ID: {medium.id}) hinzugefügt.")
             input("Drücken Sie Enter zum Fortfahren...")
 
         elif wahl == '2':
@@ -62,22 +60,17 @@ def main_menu():
         elif wahl == '3':
             print("\n--- Medium ausleihen ---")
             bibliothek.medien_anzeigen()
-            id = input("ID des Mediums: ")
+            medium_id = input("ID des Mediums, das ausgeliehen werden soll: ")
             bibliothek.nutzer_anzeigen()
-            nutzer_id = input("Nutzer-ID: ")
-            if bibliothek.medium_ausleihen(id, nutzer_id):
-                print("Medium erfolgreich ausgeliehen.")
-            else:
-                print("Ausleihe fehlgeschlagen (Medium nicht gefunden oder bereits ausgeliehen, oder Nutzer-ID ungültig).")
+            nutzer_id = input("Nutzer-ID des Ausleihenden: ")
+            bibliothek.medium_ausleihen(medium_id, nutzer_id)
             input("Drücken Sie Enter zum Fortfahren...")
 
         elif wahl == '4':
             print("\n--- Medium zurückgeben ---")
-            titel = input("Titel des Mediums: ")
-            if bibliothek.medium_zurueckgeben(titel):
-                print("Medium erfolgreich zurückgegeben.")
-            else:
-                print("Rückgabe fehlgeschlagen (Medium nicht gefunden oder nicht ausgeliehen).")
+            bibliothek.medien_anzeigen()
+            medium_id = input("ID des Mediums, das zurückgegeben werden soll: ")
+            bibliothek.medium_zurueckgeben(medium_id)
             input("Drücken Sie Enter zum Fortfahren...")
 
         elif wahl == '5':
@@ -99,7 +92,16 @@ def main_menu():
 
         elif wahl == '8':
             print("Programm beendet.")
+            print("Erstellt von Emre, Joris und Philipp")
             break
+        elif wahl == '9':
+            while True:
+                gib_ueberraschungs_fakt()
+                weiter_wahl = input("\nMöchten Sie einen weiteren Fakt erhalten (j/n)? ").lower()
+                if weiter_wahl != 'j':
+                    break
+            input("Drücken Sie Enter, um zum Hauptmenü zurückzukehren...")
+
 
         else:
             print("Ungültige Eingabe. Bitte versuchen Sie es erneut.")

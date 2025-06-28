@@ -2,12 +2,10 @@ from medium import Medium
 import json
 
 class Zeitschrift(Medium):
-    def __init__(self, id, titel, ausgabe, erscheinungsjahr, ausgeliehen_an=None):
-        super().__init__(titel)
-        self.id = id
+    def __init__(self, titel, ausgabe, erscheinungsjahr, id=None, ausgeliehen_an=None):
+        super().__init__(titel=titel, id=id, ausgeliehen_an=ausgeliehen_an)
         self.ausgabe = ausgabe
         self.erscheinungsjahr = erscheinungsjahr
-        self.ausgeliehen_an = ausgeliehen_an
 
     def to_dict(self):
         data = super().to_dict()
@@ -21,7 +19,10 @@ def zeitschriften_laden():
     try:
         with open('Zeitschriften.JSON', 'r', encoding='utf-8') as f:
             data = json.load(f)
-            return [Zeitschrift(item['id'], item['titel'], item['ausgabe'], item['erscheinungsjahr'], item['ausgeliehen_an']) for item in data]
+            return [Zeitschrift(item['titel'], item['ausgabe'], item['erscheinungsjahr'],
+                                id=item.get('id'),
+                                ausgeliehen_an=item.get('ausgeliehen_an'))
+                    for item in data]
     except FileNotFoundError:
         return []
 

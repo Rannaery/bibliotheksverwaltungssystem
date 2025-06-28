@@ -2,13 +2,11 @@ from medium import Medium
 import json
 
 class Buch(Medium):
-    def __init__(self, id, titel, autor, isbn, seitenzahl, ausgeliehen_an=None):
-        super().__init__(titel)
-        self.id = id
+    def __init__(self, titel, autor, isbn, seitenzahl, id=None, ausgeliehen_an=None):
+        super().__init__(titel=titel, id=id, ausgeliehen_an=ausgeliehen_an)
         self.autor = autor
         self.isbn = isbn
         self.seitenzahl = seitenzahl
-        self.ausgeliehen_an = ausgeliehen_an
 
     def to_dict(self):
         data = super().to_dict()
@@ -23,7 +21,10 @@ def bucher_laden():
     try:
         with open('Buecher.JSON', 'r', encoding='utf-8') as f:
             data = json.load(f)
-            return [Buch(item['id'], item['titel'], item['autor'], item['isbn'], item['seitenzahl'], item['ausgeliehen_an']) for item in data]
+            return [Buch(item['titel'], item['autor'], item['isbn'], item['seitenzahl'],
+                         id=item.get('id'),
+                         ausgeliehen_an=item.get('ausgeliehen_an'))
+                    for item in data]
     except FileNotFoundError:
         return []
 

@@ -2,22 +2,22 @@
     {
         "id": "007",
         "titel": "National Geographic",
+        "ausgeliehen_an": "xyz",
         "ausgabe": "Juli 2025",
-        "erscheinungsjahr": "2025",
-        "ausgeliehen_an": "xyz"
+        "erscheinungsjahr": "2025"
     },
     {
         "id": "008",
         "titel": "Der Spiegel",
+        "ausgeliehen_an": "xyz",
         "ausgabe": "Nr. 25",
-        "erscheinungsjahr": "2024",
-        "ausgeliehen_an": "xyz"
+        "erscheinungsjahr": "2024"
     },
     {
         "id": "009",
         "titel": "GEO Epoche",
+        "ausgeliehen_an": "xyz",
         "ausgabe": "Rom – Die Antike",
-        "erscheinungsjahr": "2023",
-        "ausgeliehen_an": "xyz"
+        "erscheinungsjahr": "2023"
     }
 ]

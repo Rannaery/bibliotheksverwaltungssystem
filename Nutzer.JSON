@@ -1,17 +1,14 @@
 [
-  {
-    "name": "Anna Müller",
-    "nutzerID": "001",
-    "ausgeliehen": []
-  },
-  {
-    "name": "Maximilian Schröder",
-    "nutzerID": "002",
-    "ausgeliehen": []
-  },
-  {
-    "name": "Leila Becker",
-    "nutzerID": "003",
-    "ausgeliehen": []
-  }
+    {
+        "name": "Anna Müller",
+        "nutzerID": "001"
+    },
+    {
+        "name": "Maximilian Schröder",
+        "nutzerID": "002"
+    },
+    {
+        "name": "Leila Becker",
+        "nutzerID": "003"
+    }
 ]

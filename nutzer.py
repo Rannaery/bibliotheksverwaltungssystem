@@ -40,7 +40,7 @@ class Nutzer:
         self.nutzer_id = nutzer_id
 
     def to_dict(self):
-        return {"Name": self.name, "NutzerID": self.nutzer_id}
+        return {"name": self.name, "nutzerID": self.nutzer_id}
 
 def nutzer_laden():
     try:

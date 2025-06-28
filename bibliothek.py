@@ -4,6 +4,7 @@ from digitalemedien import DigitalesMedium, digitale_medien_laden, digitale_medi
 from nutzer import Nutzer, nutzer_laden, nutzer_speichern
 import json
 
+
 class Bibliothek:
     def __init__(self):
         self.medien = self._alle_medien_laden()
@@ -20,6 +21,7 @@ class Bibliothek:
         bucher = [m for m in self.medien if isinstance(m, Buch)]
         zeitschriften = [m for m in self.medien if isinstance(m, Zeitschrift)]
         digitale_medien = [m for m in self.medien if isinstance(m, DigitalesMedium)]
+
         bucher_speichern(bucher)
         zeitschriften_speichern(zeitschriften)
         digitale_medien_speichern(digitale_medien)
@@ -32,45 +34,57 @@ class Bibliothek:
         self.nutzer.append(nutzer)
         nutzer_speichern(self.nutzer)
 
-    def medium_ausleihen(self, id, nutzer_id):
+    def medium_ausleihen(self, medium_id, nutzer_id):
+        nutzer_obj = None
+        for n in self.nutzer:
+            if n.nutzer_id == nutzer_id:
+                nutzer_obj = n
+                break
+        if not nutzer_obj:
+            print(f"Fehler: Nutzer mit ID '{nutzer_id}' nicht gefunden.")
+            return False
+
         for medium in self.medien:
-            print(medium.id)
-            print(id)
-            print(medium.id == id)
+            if medium.id == medium_id:
+                if medium.ausgeliehen_an is None:
+                    medium.ausgeliehen_an = nutzer_id
+                    self._medien_speichern()
+                    print(
+                        f"'{medium.titel}' (ID: {medium_id}) erfolgreich an Nutzer '{nutzer_obj.name}' (ID: {nutzer_id}) ausgeliehen.")
+                    return True
+                else:
+                    print(
+                        f"Fehler: '{medium.titel}' (ID: {medium_id}) ist bereits an Nutzer '{medium.ausgeliehen_an}' ausgeliehen.")
+                    return False
 
-            print(medium.ausgeliehen_an)
-
-            if medium.id == id and medium.ausgeliehen_an is None:
-                for nutzer_obj in self.nutzer:
-                    if nutzer_obj.nutzer_id == nutzer_id:
-                        medium.ausgeliehen_an = nutzer_id
-                        self._medien_speichern()
-                        return True
-            else:
-                break;
-
-        if medium.id != id:
-            print("Medium Titel nicht gefunden")
-        if medium.ausgeliehen_an is not None:
-            print("Medium wurde bereits von jemandem ausgeliehen")
+        print(f"Fehler: Medium mit ID '{medium_id}' nicht gefunden.")
         return False
 
-    def medium_zurueckgeben(self, titel):
+    def medium_zurueckgeben(self, medium_id):
         for medium in self.medien:
-            if medium.titel == titel and medium.ausgeliehen_an is not None:
-                medium.ausgeliehen_an = None
-                self._medien_speichern()
-                return True
+            if medium.id == medium_id:
+                if medium.ausgeliehen_an is not None:
+                    print(
+                        f"'{medium.titel}' (ID: {medium_id}) wird von Nutzer '{medium.ausgeliehen_an}' zurückgegeben.")
+                    medium.ausgeliehen_an = None
+                    self._medien_speichern()
+                    print(f"'{medium.titel}' (ID: {medium_id}) erfolgreich zurückgegeben.")
+                    return True
+                else:
+                    print(f"Fehler: '{medium.titel}' (ID: {medium_id}) ist nicht ausgeliehen.")
+                    return False
+
+        print(f"Fehler: Medium mit ID '{medium_id}' nicht gefunden.")
         return False
 
     def medien_anzeigen(self, filter_typ=None):
         gefilterte_medien = []
         if filter_typ:
-            if filter_typ == "Buch":
+            if filter_typ.lower() == "buch":
                 gefilterte_medien = [m for m in self.medien if isinstance(m, Buch)]
-            elif filter_typ == "Zeitschrift":
+            elif filter_typ.lower() == "zeitschrift":
                 gefilterte_medien = [m for m in self.medien if isinstance(m, Zeitschrift)]
-            elif filter_typ == "DigitalesMedium":
+            elif filter_typ.lower() == "digitalesmedium":
                 gefilterte_medien = [m for m in self.medien if isinstance(m, DigitalesMedium)]
             else:
                 print("Ungültiger Filter-Typ.")
@@ -82,19 +96,24 @@ class Bibliothek:
             print("Keine Medien vorhanden oder keine Treffer für den Filter.")
             return
 
+        print("\n--- Aktueller Medienbestand ---")
         for medium in gefilterte_medien:
             status = f" (Ausgeliehen an ID: {medium.ausgeliehen_an})" if medium.ausgeliehen_an else " (Verfügbar)"
             if isinstance(medium, Buch):
-                print(f"ID: {medium.id} Buch: {medium.titel} von {medium.autor}, ISBN: {medium.isbn}, Seiten: {medium.seitenzahl}{status}")
+                print(
+                    f"Buch (ID: {medium.id}): {medium.titel} von {medium.autor}, ISBN: {medium.isbn}, Seiten: {medium.seitenzahl}{status}")
             elif isinstance(medium, Zeitschrift):
-                print(f"ID: {medium.id} Zeitschrift: {medium.titel}, Ausgabe: {medium.ausgabe}, Erscheinungsjahr: {medium.erscheinungsjahr}{status}")
+                print(
+                    f"Zeitschrift (ID: {medium.id}): {medium.titel}, Ausgabe: {medium.ausgabe}, Erscheinungsjahr: {medium.erscheinungsjahr}{status}")
             elif isinstance(medium, DigitalesMedium):
-                print(f"ID: {medium.id} Digitales Medium: {medium.titel}, Format: {medium.format}, Laufzeit: {medium.laufzeit}{status}")
+                print(
+                    f"Digitales Medium (ID: {medium.id}): {medium.titel}, Format: {medium.format}, Laufzeit: {medium.laufzeit}{status}")
 
     def nutzer_anzeigen(self):
         if not self.nutzer:
             print("Keine Nutzer vorhanden.")
             return
+        print("\n--- Registrierte Nutzer ---")
         for nutzer in self.nutzer:
             print(f"Nutzer: {nutzer.name}, ID: {nutzer.nutzer_id}")
 
@@ -105,14 +124,20 @@ class Bibliothek:
                 treffer.append(medium)
             elif isinstance(medium, Buch) and suchbegriff.lower() in medium.autor.lower():
                 treffer.append(medium)
+
         if not treffer:
-            print("Keine Treffer gefunden.")
+            print(f"Keine Medien für den Suchbegriff '{suchbegriff}' gefunden.")
             return
+
+        print(f"\n--- Suchergebnisse für '{suchbegriff}' ---")
         for medium in treffer:
             status = f" (Ausgeliehen an ID: {medium.ausgeliehen_an})" if medium.ausgeliehen_an else " (Verfügbar)"
             if isinstance(medium, Buch):
-                print(f"Buch: {medium.titel} von {medium.autor}, ISBN: {medium.isbn}, Seiten: {medium.seitenzahl}{status}")
+                print(
+                    f"Buch (ID: {medium.id}): {medium.titel} von {medium.autor}, ISBN: {medium.isbn}, Seiten: {medium.seitenzahl}{status}")
             elif isinstance(medium, Zeitschrift):
-                print(f"Zeitschrift: {medium.titel}, Ausgabe: {medium.ausgabe}, Erscheinungsjahr: {medium.erscheinungsjahr}{status}")
+                print(
+                    f"Zeitschrift (ID: {medium.id}): {medium.titel}, Ausgabe: {medium.ausgabe}, Erscheinungsjahr: {medium.erscheinungsjahr}{status}")
             elif isinstance(medium, DigitalesMedium):
-                print(f"Digitales Medium: {medium.titel}, Format: {medium.format}, Laufzeit: {medium.laufzeit}{status}")
+                print(
+                    f"Digitales Medium (ID: {medium.id}): {medium.titel}, Format: {medium.format}, Laufzeit: {medium.laufzeit}{status}")

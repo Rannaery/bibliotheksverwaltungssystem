@@ -2,22 +2,22 @@
     {
         "id": "004",
         "titel": "Inception",
+        "ausgeliehen_an": "xyz",
         "format": "MP4 (Film)",
-        "laufzeit": "2h 28min",
-        "ausgeliehen_an": "xyz"
+        "laufzeit": "2h 28min"
     },
     {
         "id": "005",
         "titel": "The Daily – Podcast",
+        "ausgeliehen_an": "xyz",
         "format": "MP3 (Audio)",
-        "laufzeit": "30min",
-        "ausgeliehen_an": "xyz"
+        "laufzeit": "30min"
     },
     {
         "id": "006",
         "titel": "Excel Grundlagen – Videokurs",
+        "ausgeliehen_an": "xyz",
         "format": "Streaming (Online-Kurs)",
-        "laufzeit": "3h 15min",
-        "ausgeliehen_an": "xyz"
+        "laufzeit": "3h 15min"
     }
 ]
