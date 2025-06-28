@@ -1,0 +1,26 @@
+[
+    {
+        "id": "001",
+        "titel": "Der Alchimist",
+        "autor": "Paulo Coelho",
+        "isbn": "12345",
+        "seitenzahl": "192",
+        "ausgeliehen_an": null
+    },
+    {
+        "id": "002",
+        "titel": "Die Physiker",
+        "autor": "Friedrich Dürrenmatt",
+        "isbn": "54321",
+        "seitenzahl": "96",
+        "ausgeliehen_an": "xyz"
+    },
+    {
+        "id": "003",
+        "titel": "Die unendliche Geschichte",
+        "autor": "Michael Ende",
+        "isbn": "67890",
+        "seitenzahl": "448",
+        "ausgeliehen_an": "xyz"
+    }
+]

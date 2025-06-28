@@ -1,17 +1,23 @@
 [
-  {
-    "Titel": "National Geographic",
-    "Ausgabe": "Juli 2025",
-    "Erscheinungsjahr": "2025"
-  },
-  {
-    "Titel": "Der Spiegel",
-    "Ausgabe": "Nr. 25",
-    "Erscheinungsjahr": "2024"
-  },
-  {
-    "Titel": "GEO Epoche",
-    "Ausgabe": "Rom – Die Antike",
-    "Erscheinungsjahr": "2023"
-  }
+    {
+        "id": "007",
+        "titel": "National Geographic",
+        "ausgabe": "Juli 2025",
+        "erscheinungsjahr": "2025",
+        "ausgeliehen_an": "xyz"
+    },
+    {
+        "id": "008",
+        "titel": "Der Spiegel",
+        "ausgabe": "Nr. 25",
+        "erscheinungsjahr": "2024",
+        "ausgeliehen_an": "xyz"
+    },
+    {
+        "id": "009",
+        "titel": "GEO Epoche",
+        "ausgabe": "Rom – Die Antike",
+        "erscheinungsjahr": "2023",
+        "ausgeliehen_an": "xyz"
+    }
 ]
