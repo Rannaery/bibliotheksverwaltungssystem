@@ -64,6 +64,5 @@ Nach dem Start erscheint das Konsolenmenü mit folgenden Optionen:
 • Automatisches Laden/Speichern: Beim Programmstart werden vorhandene Daten    
    geladen. Änderungen (z. B. neue Medien, Ausleihen) werden automatisch gespeichert.
    Hinweis: Bei händischer Anpassung der JSON muss das Programm neu gestartet werden um 
-  die Änderungen zu übernehmen 
-	Es muss sichergestellt werden dass die JSON Dateien schreibbar sind. Fehlende JSON-Dateien werden beim Programmstart automatisch neu erstellt.
-![image](https://github.com/user-attachments/assets/9d19b0e5-104c-4981-a50b-1341e3c947a5)
+            die Änderungen zu übernehmen.
+	     Es muss sichergestellt werden dass die JSON Dateien schreibbar sind. Fehlende JSON-Dateien werden beim Programmstart automatisch neu erstellt.
