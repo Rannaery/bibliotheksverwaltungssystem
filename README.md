@@ -1,10 +1,13 @@
-Bibliotheksverwaltungssystem
+# Bibliotheksverwaltungssystem
 
 
-1. Projektbeschreibung
+
+
+## 1. Projektbeschreibung
 Das Bibliotheksverwaltungssystem ist eine Python-Anwendung zur kompakten Verwaltung von Medien und Nutzern. Die Anwendung ermöglicht das Hinzufügen, Ausleihen und Zurückgeben von Medien (z.B.: Bücher, Zeitschriften, digitale Medien) sowie die Verwaltung von Nutzern.
 Die Anwendung nutzt Kapselung, wie auch objektorientierte Programmierung (OOP) mit Vererbung und speichert Daten persistent in JSON-Dateien. Ein Konsolenmenü bietet eine benutzerfreundliche Bedienung. In diesem sind unter anderem Suchfunktion sowie Filteroptionen zur Erleichterung der Navigation & Ansicht mitgeboten. Zusätzlich gibt es eine Überraschungsfunktion, die zufällige Fakten anzeigt.
-2. Überblick über die Klassen
+
+## 2. Überblick über die Klassen
 Die Anwendung ist modular aufgebaut und verwendet folgende Hauptklassen:
 • Medium (Basisklasse)
 –	Attribute: titel, id (UUID), ausgeliehen_an (Nutzer-ID oder None).
@@ -31,7 +34,8 @@ Die Anwendung ist modular aufgebaut und verwendet folgende Hauptklassen:
 –	Attribute: medien (Liste aller Medien), nutzer (Liste aller Nutzer).
 –	Methoden: medium_hinzufuegen(), nutzer_hinzufuegen(), medium_ausleihen(), medium_zurueckgeben(), medien_anzeigen(), nutzer_anzeigen(), suchen().
 –	Zweck: Zentrale Verwaltung von Medien und Nutzern.
-3. Bedienungsanleitung
+
+## 3. Bedienungsanleitung
 1. Programm starten:
 – Hierzu  main.py in einer Python-Umgebung ausführen (Python 3.6+ erforderlich).
 – TIPP: Sicherstellen, dass die JSON-Dateien (Buecher.JSON, Zeitschriften.JSON, DigitaleMedien.JSON, Nutzer.JSON) im gleichen Verzeichnis liegen.
@@ -53,7 +57,8 @@ Nach dem Start erscheint das Konsolenmenü mit folgenden Optionen:
 4. Notiere die ID des gewünschten Nutzer (z. B. 001).
 5. Wähle Option 3, gebe die Medium-ID (001) und Nutzer-ID (001) ein.
 6. Das System bestätigt die Ausleihe und bucht diese.
-4. Hinweise zur Dateispeicherung
+
+## 4. Hinweise zur Dateispeicherung
 • Speicherort: Daten werden in folgenden JSON-Dateien im Projektverzeichnis gespeichert:
 -	Buecher.JSON (Bücher)
 -	Zeitschriften.JSON (Zeitschriften)
@@ -63,6 +68,7 @@ Nach dem Start erscheint das Konsolenmenü mit folgenden Optionen:
    Klasse zum testen.s
 • Automatisches Laden/Speichern: Beim Programmstart werden vorhandene Daten    
    geladen. Änderungen (z. B. neue Medien, Ausleihen) werden automatisch gespeichert.
+
    Hinweis: Bei händischer Anpassung der JSON muss das Programm neu gestartet werden um 
             die Änderungen zu übernehmen.
 	     Es muss sichergestellt werden dass die JSON Dateien schreibbar sind. Fehlende JSON-Dateien werden beim Programmstart automatisch neu erstellt.
