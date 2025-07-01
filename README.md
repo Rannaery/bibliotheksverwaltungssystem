@@ -71,4 +71,4 @@ Nach dem Start erscheint das Konsolenmenü mit folgenden Optionen:
 
    Hinweis: Bei händischer Anpassung der JSON muss das Programm neu gestartet werden um 
             die Änderungen zu übernehmen.
-	     Es muss sichergestellt werden dass die JSON Dateien schreibbar sind. Fehlende JSON-Dateien werden beim Programmstart automatisch neu erstellt.
+	     Es muss sichergestellt werden, dass die JSON Dateien schreibbar sind. Fehlende JSON-Dateien werden beim Programmstart automatisch neu erstellt.
