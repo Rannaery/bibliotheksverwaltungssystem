@@ -1,7 +1,7 @@
 import random
 
 def gib_ueberraschungs_fakt():
-fakten = [
+    fakten = [
     "Wussten Sie, Herr Ruhl, dass Python nach der britischen Comedy-Gruppe Monty Python benannt ist\nund nicht nach der Schlange?",
     "Wussten Sie, Herr Aschauer, dass MySQL für 'My Structured Query Language' steht\nund das 'My' vom Namen der Tochter des Mitbegründers Michael Widenius stammt?",
     "Wussten Sie, Herr Ruhl, dass Python eine interpretierte Sprache ist,\nwas bedeutet, dass der Code Zeile für Zeile ausgeführt wird,\nanstatt vor der Ausführung vollständig kompiliert zu werden?",
